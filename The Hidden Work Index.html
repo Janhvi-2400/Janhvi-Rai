@@ -1,0 +1,1040 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>The Hidden Work Index</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: the working paper. Reading column plus a margin for provenance notes; highlighter marks hidden work and nothing else. */
+:root{
+  --paper:#F6F6F3; --ink:#17191C; --ink-2:#54585E; --rule:#D9D9D3; --soft:#ECECE7;
+  --mark:#F3D54E; --mark-ink:#8A6B00; --cobalt:#2846C4; --on-cobalt:#FFFFFF;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#111214; --ink:#ECECE8; --ink-2:#A3A6AB; --rule:#2C2E31; --soft:#1B1C1F;
+  --mark:#5C4E14; --mark-ink:#E5C646; --cobalt:#8299FF; --on-cobalt:#0B0F24; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#111214; --ink:#ECECE8; --ink-2:#A3A6AB; --rule:#2C2E31; --soft:#1B1C1F;
+  --mark:#5C4E14; --mark-ink:#E5C646; --cobalt:#8299FF; --on-cobalt:#0B0F24; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+a{color:var(--cobalt);text-underline-offset:3px;text-decoration-thickness:1px}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--serif);font-weight:400;text-wrap:balance;margin:0;letter-spacing:-.01em}
+h2{font-size:clamp(30px,3.6vw,44px);line-height:1.12}
+h3{font-size:24px;line-height:1.2}
+h4{font-family:var(--sans);font-size:15px;font-weight:600;margin:0}
+p{margin:0}
+.read{font-family:var(--serif);font-size:19px;line-height:1.55;max-width:64ch}
+.read p+p{margin-top:14px}
+.label{font-size:13px;font-weight:600;color:var(--ink-2)}
+.note{font-size:13px;line-height:1.45;color:var(--ink-2)}
+.num{font-variant-numeric:tabular-nums}
+mark{background:linear-gradient(transparent 12%,var(--mark) 12%,var(--mark) 88%,transparent 88%);color:inherit;padding:0 .12em}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;border:1px solid currentColor;padding:1px 6px;border-radius:2px;letter-spacing:.02em}
+.tag.syn{color:var(--ink-2);background:repeating-linear-gradient(135deg,transparent 0 4px,var(--soft) 4px 7px)}
+.tag.pub{color:var(--ink)}
+.tag.est{color:var(--mark-ink)}
+
+
+section.s{padding-block:clamp(56px,6vw,84px)}
+.cover h1{font-size:clamp(44px,6vw,76px);line-height:1.02;margin:14px 0 18px}
+.subtitle{font-family:var(--serif);font-size:clamp(19px,2vw,23px);line-height:1.4;max-width:44ch;color:var(--ink-2)}
+table.meta{margin-top:30px;width:auto;font-size:14.5px}
+table.meta th{color:var(--ink-2);font-weight:500;padding:7px 28px 7px 0}
+table.meta td{padding:7px 0}
+.toc ol{padding-left:20px;margin:10px 0 0;display:grid;gap:7px;font-size:15px}
+.toc a{color:var(--ink)}
+h2 .n{display:inline-block;min-width:1.5em;color:var(--ink-2)}
+.main > h2{margin-bottom:18px}
+.fig{margin-block:32px}
+.caption{font-size:13.5px;color:var(--ink-2);margin-top:12px;max-width:72ch}
+.caption b{color:var(--ink);font-weight:600}
+caption{text-align:left;font-size:13.5px;color:var(--ink-2);padding:10px 0}
+caption b{color:var(--ink);font-weight:600}
+.notes p{font-size:13px;color:var(--ink-2);line-height:1.5}
+.notes p+p{margin-top:12px}
+sup{font-size:.62em;line-height:0}
+ul.plain{padding-left:20px;margin:10px 0 0;font-size:18px}
+.sig{font-style:italic;margin-top:14px}
+.part{font-size:22px;margin:44px 0 6px;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.qq{border:0;border-top:1px solid var(--rule);padding:16px 0 18px;margin:0;max-width:920px;min-width:0}
+.qq legend{float:left;width:100%;font-size:16.5px;line-height:1.4;margin-bottom:12px;display:flex;gap:12px;padding:0}
+.qn{min-width:24px;color:var(--ink-2)}
+.ro{clear:both;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding-left:36px}
+.ro label{display:flex;gap:8px;align-items:flex-start;font-size:14.5px;line-height:1.35;border:1px solid var(--rule);padding:9px 10px;cursor:pointer;border-radius:2px}
+.ro input{accent-color:var(--cobalt);margin:2px 0 0;flex:none}
+.ro label:has(input:checked){border-color:var(--cobalt);background:var(--soft)}
+.qq.missing{box-shadow:inset 3px 0 0 var(--mark-ink);padding-left:12px}
+@media (max-width:760px){.ro{grid-template-columns:1fr 1fr;padding-left:0}}
+@media (max-width:400px){.ro{grid-template-columns:1fr}}
+.hgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;max-width:920px}
+@media (max-width:760px){.hgrid{grid-template-columns:1fr}}
+.submitrow{display:flex;gap:16px;align-items:center;margin-top:30px;flex-wrap:wrap}
+ol.steps{margin:0;padding-left:22px;font-family:var(--serif);font-size:19px;display:grid;gap:4px}
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--paper);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;gap:24px;height:60px}
+.wordmark{font-family:var(--serif);font-size:20px;text-decoration:none;color:var(--ink);white-space:nowrap}
+.wordmark span{font-family:var(--sans);font-size:12px;color:var(--ink-2);margin-left:6px}
+nav.links{margin-left:auto;display:flex;gap:22px}
+nav.links a{color:var(--ink);text-decoration:none;font-size:15px;padding:4px 0;border-bottom:1px solid transparent}
+nav.links a[aria-current="page"]{border-bottom-color:var(--ink)}
+nav.links a:hover{border-bottom-color:var(--ink-2)}
+#menuBtn{display:none;margin-left:auto;background:none;border:1px solid var(--rule);color:var(--ink);font:500 14px var(--sans);padding:8px 12px;border-radius:2px;cursor:pointer}
+@media (max-width:760px){
+  #menuBtn{display:block}
+  nav.links{display:none;position:absolute;left:0;right:0;top:60px;background:var(--paper);border-bottom:1px solid var(--rule);flex-direction:column;gap:0;padding:8px max(16px,env(safe-area-inset-left,0px)) 16px}
+  nav.links.open{display:flex}
+  nav.links a{padding:12px 0;border-bottom:1px solid var(--rule)}
+}
+
+.btn{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:2px;background:var(--cobalt);color:var(--on-cobalt);border:1px solid var(--cobalt);font:500 15px var(--sans);text-decoration:none;cursor:pointer}
+.btn.quiet{background:transparent;color:var(--ink);border-color:var(--rule)}
+.btn:hover{filter:brightness(1.08)}
+.textlink{font-size:15px;font-weight:500}
+
+section.s{padding-block:clamp(64px,8vw,112px);border-top:1px solid var(--rule)}
+section.s:first-child{border-top:0}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+.main{grid-column:1/span 7;min-width:0}
+.margin{grid-column:9/span 4;min-width:0;padding-top:6px}
+.full{grid-column:1/-1;min-width:0}
+@media (max-width:900px){.main,.margin{grid-column:1/-1}.margin{padding-top:20px}}
+.head{display:grid;gap:16px;margin-bottom:36px}
+
+/* hero */
+.hero{padding-block:clamp(48px,7vw,96px) clamp(56px,7vw,96px)}
+.hero .over{font-size:14px;color:var(--ink-2);margin-bottom:28px}
+.hero h1{font-size:clamp(40px,6vw,72px);line-height:1.04;max-width:16ch}
+.verbs{list-style:none;margin:32px 0;padding:0;font-family:var(--serif);font-size:clamp(22px,2.4vw,28px);line-height:1.4;display:grid;gap:2px}
+.verbs li span{background:linear-gradient(transparent 55%,var(--mark) 55%,var(--mark) 90%,transparent 90%);padding:0 .1em}
+.hero .lead{font-family:var(--serif);font-size:20px;line-height:1.5;max-width:52ch}
+.ctas{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-top:28px}
+.status{margin-top:40px;font-size:13px;color:var(--ink-2);display:flex;gap:8px 18px;flex-wrap:wrap}
+
+/* strip */
+.strip-wrap{margin-top:8px}
+.strip{display:flex;height:56px;border:1px solid var(--rule);background:var(--paper)}
+.seg{transition:flex-grow .9s ease;min-width:0;position:relative}
+.seg.work{background:var(--ink);min-width:2px}
+.seg.wait{background:var(--mark)}
+.strip.only .seg.wait{flex-grow:0!important}
+.strip.only .seg.work{border-right:1px solid var(--paper)}
+.seg.work span{position:absolute;inset:0;display:none;color:var(--paper);font-size:11.5px;line-height:1.2;padding:6px;overflow:hidden}
+.strip.only .seg.work span{display:block}
+.days{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-2);margin-top:6px}
+.strip.only + .days{visibility:hidden}
+.strip-read{display:flex;gap:28px;flex-wrap:wrap;align-items:baseline;margin-top:18px}
+.strip-read b{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1}
+.strip-read div{display:grid;gap:4px}
+.switch{display:inline-flex;align-items:center;gap:10px;font-size:15px;cursor:pointer;margin-bottom:14px}
+.switch input{width:18px;height:18px;accent-color:var(--cobalt)}
+.key{display:flex;gap:18px;font-size:13px;color:var(--ink-2);margin-top:10px;flex-wrap:wrap}
+.key i{display:inline-block;width:14px;height:10px;margin-right:6px;vertical-align:-1px}
+@media (prefers-reduced-motion: reduce){.seg{transition:none}}
+
+/* evidence */
+.evidence{list-style:none;margin:0;padding:0;display:grid;gap:28px}
+.evidence li{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:12px 24px;padding-top:20px;border-top:1px solid var(--rule)}
+.evidence .fig{font-family:var(--serif);font-size:clamp(36px,4vw,52px);line-height:1}
+.evidence .fig small{font-size:.5em;color:var(--ink-2)}
+.evidence p{font-size:16.5px;margin-top:8px;max-width:46ch}
+@media (max-width:700px){.evidence li{grid-template-columns:1fr}}
+
+/* matrix */
+.mx{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 40px;align-items:start}
+@media (max-width:900px){.mx{grid-template-columns:1fr}}
+.mx svg{width:100%;height:auto;display:block}
+.mx svg text{fill:var(--ink-2);font-family:var(--sans)}
+.mx .qname{font-family:var(--serif);font-style:italic;font-size:19px;fill:var(--ink)}
+.dot{cursor:pointer}
+.dot:focus{outline:none}
+.dot:focus circle.o,.dot:hover circle.o{stroke-width:2.2}
+.panel{border-top:1px solid var(--ink);padding-top:14px;display:grid;gap:10px}
+.panel dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;margin:0;font-size:15px}
+.panel dt{color:var(--ink-2)}
+.panel dd{margin:0}
+.mode{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--ink-2);margin-bottom:10px;flex-wrap:wrap}
+
+/* status block */
+.statusgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;border-top:1px solid var(--ink);padding-top:20px}
+.statusgrid > div{display:grid;gap:8px;align-content:start}
+.big{font-family:var(--serif);font-size:44px;line-height:1}
+.prog{height:4px;background:var(--soft)}
+.prog i{display:block;height:100%;background:var(--ink);width:0}
+@media (max-width:760px){.statusgrid{grid-template-columns:1fr}}
+
+/* tables */
+.tbl{overflow-x:auto;border-top:1px solid var(--ink)}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;vertical-align:top;padding:10px 12px 10px 0;border-bottom:1px solid var(--rule)}
+th{font-size:13px;font-weight:600;color:var(--ink-2)}
+td.r,th.r{text-align:right}
+.playbook td:first-child{font-family:var(--serif);font-size:19px;white-space:nowrap}
+
+/* details */
+details{border-top:1px solid var(--rule)}
+details:last-of-type{border-bottom:1px solid var(--rule)}
+summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;padding:14px 0;align-items:baseline}
+summary::-webkit-details-marker{display:none}
+summary .t{font-family:var(--serif);font-size:20px}
+summary .w{font-size:13px;color:var(--ink-2)}
+summary::after{content:"+";font-size:18px;color:var(--ink-2);grid-column:2;grid-row:1;justify-self:end;display:none}
+details > div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:0 0 20px;font-size:15px}
+details > div h4{margin-bottom:4px}
+@media (max-width:760px){details > div{grid-template-columns:1fr}}
+
+/* decomposition */
+.decomp{display:flex;height:40px;margin:12px 0 6px;gap:2px}
+.decomp i{display:block;background:var(--mark);transition:flex-grow .8s ease;flex-basis:0;position:relative}
+.decomp i span{position:absolute;left:4px;top:50%;transform:translateY(-50%);font-size:11.5px;font-style:normal;color:var(--ink);white-space:nowrap;overflow:hidden;max-width:calc(100% - 6px)}
+.decomp i.rest{background:var(--soft)}
+
+/* gate */
+.gate{list-style:none;margin:0;padding:0;counter-reset:g}
+.gate li{display:grid;grid-template-columns:32px minmax(0,1fr) minmax(0,220px);gap:12px 20px;padding:14px 0;border-top:1px solid var(--rule);counter-increment:g;align-items:baseline}
+.gate li::before{content:counter(g);font-family:var(--serif);font-size:22px;color:var(--ink-2)}
+.gate .out{font-weight:600;font-size:14.5px}
+@media (max-width:640px){.gate li{grid-template-columns:28px 1fr}.gate .out{grid-column:2}}
+.outcomes{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.outcomes span{border:1px solid var(--rule);padding:6px 10px;font-size:14px}
+
+/* swimlane */
+.swim-scroll{overflow-x:auto;border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
+.swim{position:relative;width:1000px;height:300px}
+.lane{position:absolute;left:0;right:0;height:70px;border-bottom:1px solid var(--rule)}
+.lane b{position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:12.5px;font-weight:600;color:var(--ink-2);width:120px;line-height:1.25}
+.box{position:absolute;width:58px;height:54px;border:1px solid var(--ink);background:var(--paper);font-size:10.5px;line-height:1.2;padding:4px;overflow:hidden;transition:left .9s ease,top .9s ease,width .9s ease,opacity .6s ease;z-index:2}
+.box.hw{background:var(--mark);border-color:var(--mark-ink)}
+.box.auto{border-style:dashed}
+.box.gone{opacity:0}
+.swim svg{position:absolute;inset:0;width:1000px;height:300px;z-index:1;transition:opacity .3s}
+.swim svg line,.swim svg path{stroke:var(--ink-2);stroke-width:1;fill:none}
+@media (prefers-reduced-motion: reduce){.box{transition:none}}
+.tabs{display:flex;gap:0;margin-bottom:14px;border:1px solid var(--rule);width:max-content}
+.tabs button{background:none;border:0;padding:10px 16px;font:500 14.5px var(--sans);color:var(--ink-2);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.compare{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:20px}
+.compare div{display:grid;gap:2px;border-top:1px solid var(--rule);padding-top:8px}
+.compare b{font-family:var(--serif);font-weight:400;font-size:26px}
+.compare s{color:var(--ink-2);font-size:14px}
+@media (max-width:760px){.compare{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* passport */
+.passport{border:1px solid var(--ink);padding:clamp(18px,3vw,32px);display:grid;gap:22px;background:var(--paper)}
+.pp-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--ink);padding-bottom:12px}
+.pp-head h3{font-size:28px}
+.pp-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 28px}
+.pp-facts div{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--rule);padding:7px 0;font-size:14.5px}
+.pp-facts span{color:var(--ink-2)}
+@media (max-width:820px){.pp-facts{grid-template-columns:1fr}}
+.pp-scores{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:20px 40px;align-items:end}
+.pp-scores .big{font-size:56px}
+@media (max-width:700px){.pp-scores{grid-template-columns:1fr 1fr}.pp-scores .bars{grid-column:1/-1}}
+.bars{display:grid;gap:6px}
+.bar{display:grid;grid-template-columns:120px minmax(0,1fr) 30px;gap:10px;align-items:center;font-size:13.5px}
+.bar .t{height:9px;background:var(--soft)}
+.bar .t i{display:block;height:100%;background:var(--ink-2);transition:width .7s ease}
+.bar.top .t i{background:var(--mark-ink)}
+.bar.top span:first-child{font-weight:600}
+.bar .num{text-align:right}
+.cols3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.cols3 h4{margin-bottom:6px}
+.cols3 ol,.cols3 ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:14.5px}
+@media (max-width:820px){.cols3{grid-template-columns:1fr}}
+
+/* diagnostic */
+.dx{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:40px;align-items:start}
+@media (max-width:960px){.dx{grid-template-columns:1fr}}
+.qcard{border:1px solid var(--ink);padding:clamp(18px,3vw,30px);display:grid;gap:20px;background:var(--paper)}
+.qmeta{display:flex;justify-content:space-between;gap:12px;font-size:13px;color:var(--ink-2);flex-wrap:wrap}
+.qbar{height:3px;background:var(--soft)}
+.qbar i{display:block;height:100%;background:var(--ink);transition:width .25s}
+.qtext{font-family:var(--serif);font-size:clamp(22px,2.4vw,27px);line-height:1.25;text-wrap:balance}
+.opts{display:grid;gap:8px}
+.opt{display:flex;gap:14px;align-items:center;width:100%;text-align:left;background:var(--paper);color:var(--ink);border:1px solid var(--rule);border-radius:2px;padding:13px 14px;font:15.5px/1.35 var(--sans);cursor:pointer}
+.opt:hover{border-color:var(--ink)}
+.opt kbd{font:12px var(--sans);color:var(--ink-2);border:1px solid var(--rule);padding:0 6px;border-radius:2px}
+.opt.on{border-color:var(--cobalt);box-shadow:inset 3px 0 0 var(--cobalt)}
+.qnav{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.linkbtn{background:none;border:0;color:var(--cobalt);font:500 14.5px var(--sans);cursor:pointer;padding:6px 0;text-decoration:underline;text-underline-offset:3px}
+.field{display:grid;gap:6px}
+.field label{font-size:14px;font-weight:600}
+.field input,.field select,.field textarea{font:15.5px var(--sans);padding:10px 12px;border:1px solid var(--rule);border-radius:2px;background:var(--paper);color:var(--ink);width:100%}
+.field textarea{min-height:84px;resize:vertical}
+.fields2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:560px){.fields2{grid-template-columns:1fr}}
+.result{display:grid;gap:24px}
+.res-scores{display:grid;grid-template-columns:1fr 1fr;gap:20px;border-top:1px solid var(--ink);padding-top:16px}
+.res-scores .big{font-size:60px}
+.res-scores .big small{font-size:20px;color:var(--ink-2)}
+.band{font-size:14px;font-weight:600}
+.rblock{border-top:1px solid var(--rule);padding-top:14px;display:grid;gap:10px}
+.route{display:flex;flex-wrap:wrap;gap:6px 4px;align-items:center;font-family:var(--serif);font-size:20px}
+.route i{font-style:normal;color:var(--ink-2);font-family:var(--sans);font-size:14px;margin:0 4px}
+.hours{display:flex;gap:28px;flex-wrap:wrap;align-items:baseline}
+.hours b{font-family:var(--serif);font-weight:400;font-size:34px}
+.placeholder{border:1px dashed var(--rule);padding:22px;color:var(--ink-2);font-size:15px;display:grid;gap:10px}
+.placeholder ul{margin:0;padding-left:18px;display:grid;gap:4px}
+
+/* index */
+.views td:nth-child(1){font-family:var(--serif);font-size:18px;white-space:nowrap}
+.lock{font-size:13px;color:var(--ink-2);white-space:nowrap}
+
+/* contribute */
+.offer{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;border-top:1px solid var(--ink);padding-top:18px}
+.offer ul{margin:8px 0 0;padding-left:18px;display:grid;gap:6px;font-size:15px}
+@media (max-width:820px){.offer{grid-template-columns:1fr}}
+form.contrib{display:grid;gap:14px;max-width:640px}
+fieldset{border:0;padding:0;margin:0;display:grid;gap:8px}
+legend{font-size:14px;font-weight:600;margin-bottom:6px}
+.radio{display:flex;gap:10px;align-items:center;font-size:15px}
+.radio input{accent-color:var(--cobalt);width:18px;height:18px}
+.copybox{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.copybox code{font:15px var(--sans);background:var(--soft);padding:9px 12px;user-select:all}
+
+footer{border-top:1px solid var(--rule);padding-block:40px 64px;font-size:14px;color:var(--ink-2)}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
+footer ol{margin:6px 0 0;padding-left:18px;display:grid;gap:6px}
+@media (max-width:760px){footer .wrap{grid-template-columns:1fr}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:10px 16px;font-size:14px;z-index:20}
+@media print{
+  header.top,footer,.noprint,[data-view]:not(#v-diagnostic){display:none!important}
+  #v-diagnostic .qcard,#v-diagnostic .head{display:none!important}
+  .dx{display:block}
+  body{background:#fff;color:#000}
+}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="wordmark" href="#home">The Hidden Work Index<span>Ireland</span></a>
+    <button id="menuBtn" type="button" aria-expanded="false" aria-controls="navLinks">Menu</button>
+    <nav class="links" id="navLinks" aria-label="Main">
+      <a href="#research">Research</a>
+      <a href="#index">Index</a>
+      <a href="#diagnostic">Diagnostic</a>
+      <a href="#method">Method</a>
+      <a href="#contribute">Contribute</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ================= HOME ================= -->
+<div data-view="home" id="v-home">
+  <section class="s cover">
+    <div class="wrap grid">
+      <div class="main">
+        <p class="label">Working paper 1 · October 2026</p>
+        <h1>The Hidden Work Index</h1>
+        <p class="subtitle">A study of how routine work moves through Irish organisations, and what is worth fixing before anyone adds more technology.</p>
+        <table class="meta">
+          <tr><th>Author</th><td>Janhvi Rai, Dublin</td></tr>
+          <tr><th>Status</th><td>Pilot. Fieldwork starts November 2026</td></tr>
+          <tr><th>Method</th><td><a href="#method">Version 1.0</a>, fixed before the first interview</td></tr>
+          <tr><th>Last updated</th><td>25 October 2026</td></tr>
+        </table>
+      </div>
+      <nav class="margin toc" aria-label="Contents">
+        <p class="label">Contents</p>
+        <ol>
+          <li><a href="#s1">What I mean by hidden work</a></li>
+          <li><a href="#s2">The Irish context</a></li>
+          <li><a href="#s3">Two scores, four decisions</a></li>
+          <li><a href="#s4">Progress</a></li>
+          <li><a href="#s5">Taking part</a></li>
+        </ol>
+        <p class="note" style="margin-top:14px">Or go straight to the <a href="#diagnostic">diagnostic</a>.</p>
+      </nav>
+    </div>
+  </section>
+
+  <section class="s" id="s1">
+    <div class="wrap grid">
+      <div class="main">
+        <h2><span class="n">1</span>What I mean by hidden work</h2>
+        <div class="read">
+          <p>Most workflows have a small amount of real work in them and a lot of coordination around it. Someone chases a sign off. Someone looks for the latest version of a file. Someone types the same details into a second system and then waits for another team to reply.</p>
+          <p>None of that is anyone's job, so it rarely gets measured. I call it <mark>hidden work</mark>, and it is what this study tries to count.</p>
+        </div>
+      </div>
+      <div class="full fig">
+        <label class="switch"><input type="checkbox" id="onlyWork"> Show only the time someone is working</label>
+        <div class="strip" id="strip" role="img" aria-label="Nine working days, of which 52 minutes are work and the rest is waiting"></div>
+        <div class="days" aria-hidden="true"><span>Day 1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>Day 9</span></div>
+        <div class="key"><span><i style="background:var(--ink)"></i>Someone working on it</span><span><i style="background:var(--mark)"></i>Waiting</span></div>
+        <p class="caption"><b>Figure 1.</b> One supplier invoice from arrival to payment. Synthetic example, not research data.</p>
+      </div>
+      <div class="main read">
+        <p>In this example the invoice spends nine working days in the process, and someone works on it for 52 minutes. That ratio, 1.3%, is called flow efficiency. It is a standard Lean measure and the main number this study collects for every workflow.</p>
+        <p>Adding AI to a process like this would make some of those 52 minutes faster. It would not touch the nine days unless the waiting changes too.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="s2">
+    <div class="wrap grid">
+      <div class="main">
+        <h2><span class="n">2</span>The Irish context</h2>
+        <div class="read"><p>Irish firms are taking up AI quickly, but mostly for individual tasks rather than whole workflows.<sup>1</sup></p></div>
+        <div class="tbl" style="margin-top:24px">
+          <table class="t1">
+            <caption><b>Table 1.</b> AI adoption in Ireland, selected public figures</caption>
+            <thead><tr><th>Measure</th><th class="r">Figure</th><th class="r">Note</th></tr></thead>
+            <tbody>
+              <tr><td>Enterprises with 10 or more staff using AI, 2023 and 2025</td><td class="r num">8%, 20%</td><td class="r">1</td></tr>
+              <tr><td>Firms in the enterprise consultation with AI in a pilot or embedded workflow</td><td class="r num">15%</td><td class="r">1</td></tr>
+              <tr><td>Small firms using generic tools such as ChatGPT or Copilot</td><td class="r num">92%</td><td class="r">2</td></tr>
+              <tr><td>Small firms using AI tailored to their own business</td><td class="r num">30%</td><td class="r">2</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="read" style="margin-top:24px"><p>These figures say a lot about adoption and very little about whether the work itself changed. That is the gap this study looks at.</p></div>
+      </div>
+      <aside class="margin notes">
+        <p><sup>1</sup> Department of Enterprise, Tourism and Employment, <a href="https://enterprise.gov.ie/en/publications/publication-files/a-sectoral-study-on-ai-in-enterprise-in-ireland.pdf" target="_blank" rel="noopener">A Sectoral Study on Artificial Intelligence in Enterprise in Ireland</a>, prepared by Accenture, October 2026. The report notes that firms are adopting AI faster than they are embedding it in their operations.</p>
+        <p><sup>2</sup> Small Firms Association, <a href="https://www.ibec.ie/sfa/news-insights-and-events/news/2026/08/10/small-firms-association-sound-alarm-over-shallow-ai-adoption" target="_blank" rel="noopener">AI Survey 2026</a>, carried out by Amárach, 404 firms, August 2026.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="s" id="s3">
+    <div class="wrap">
+      <div class="grid"><div class="main">
+        <h2><span class="n">3</span>Two scores, four decisions</h2>
+        <div class="read"><p>Each workflow gets a Hidden Work Score for friction and an AI Value Readiness score for whether AI could help safely. Plotted together they suggest one of four decisions. The line from each dot shows where the workflow should end up once the recommended changes are made. Fixing a process usually moves it down and to the right.</p></div>
+      </div></div>
+      <div class="mx" id="homeMatrix" style="margin-top:28px"></div>
+      <p class="caption"><b>Figure 2.</b> Hidden Work Score against AI Value Readiness. All ten dots are synthetic. <a href="#score">How the scores are built</a></p>
+    </div>
+  </section>
+
+  <section class="s" id="s4">
+    <div class="wrap grid">
+      <div class="main">
+        <h2><span class="n">4</span>Progress</h2>
+        <div class="read"><p>Fieldwork starts in November 2026. As of 25 October, no workflows have been mapped. The aim for the pilot is ten.</p></div>
+        <div class="tbl" style="margin-top:24px"><table>
+          <thead><tr><th>Date</th><th>Entry</th></tr></thead>
+          <tbody>
+            <tr><td class="num">21 Oct 2026</td><td>Methodology version 1.0 fixed. Equal weights across the seven dimensions until the pilot tests them.</td></tr>
+            <tr><td class="num">Next</td><td class="note">First field note after the first interview.</td></tr>
+          </tbody>
+        </table></div>
+        <h3 style="margin-top:36px;font-size:20px">Questions I can't answer yet</h3>
+        <ul class="read plain">
+          <li>Do handoffs or unclear ownership explain more of the friction?</li>
+          <li>Will scores vary more between sectors or inside them?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="s5">
+    <div class="wrap grid">
+      <div class="main">
+        <h2><span class="n">5</span>Taking part</h2>
+        <div class="read"><p>I'm looking for ten Irish organisations for the pilot. It takes 25 to 30 minutes with whoever runs one workflow, talking through a recent case. I don't need customer data or documents, and your organisation can stay anonymous. Within a week you get a one page write up of that workflow with both scores and three recommendations.</p></div>
+        <p style="margin-top:20px"><a class="btn" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=icUOQmao0EqaV-YEng07wHgzVYsFA8VBlHj7ROZ_4yRUQVVOMTRTTVhUT1BCS0tNRjEwRE04S0NZMS4u" target="_blank" rel="noopener">Register interest</a> <a class="textlink" href="#contribute" style="margin-left:16px">What taking part involves</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap grid">
+      <div class="main read">
+        <p class="label" style="font-family:var(--sans)">About this paper</p>
+        <p>I'm running this study independently. I started it because organisations are adopting more technology than ever, and I wanted to know whether the work itself is actually getting any better. Background and method are on the <a href="#about">method page</a>, and you can find me on <a href="https://www.linkedin.com/in/janhvi-rai-08ba07259" target="_blank" rel="noopener">LinkedIn</a>.</p>
+        <p class="sig">Janhvi Rai</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= RESEARCH ================= -->
+<div data-view="research" id="v-research" hidden>
+  <section class="s">
+    <div class="wrap grid">
+      <div class="main head">
+        <p class="label">Working paper 1 · supporting material</p>
+        <h2>Research</h2>
+        <div class="read"><p>The study uses four pieces, in this order: a score for friction, a test of whether handoffs drive it, a gate that decides whether AI belongs at all, and a sequence of fixes that puts AI near the end. The worked example at the bottom is synthetic.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="score">
+    <div class="wrap grid">
+      <div class="main head">
+        <h2>The Hidden Work Score</h2>
+        <div class="read"><p>Seven dimensions, each scored 0 to 100 from one or two questions, weighted equally in version 1.0. A higher score means more friction. Equal weights are a starting hypothesis that the pilot will test.</p></div>
+      </div>
+      <aside class="margin note">Why equal weights: any other split would be a guess presented as a finding. After the pilot, five practitioners will weight the dimensions independently, and the version history will record whether it changed anyone's result.</aside>
+      <div class="full">
+        <p class="label">How the synthetic case scores 67 <span class="tag syn">Synthetic demonstration</span></p>
+        <div class="decomp" id="decomp" role="img" aria-label="Score of 67 split into seven contributions"></div>
+        <p class="note" id="decompNote">Each block is one dimension's contribution: its score divided by seven.</p>
+        <div style="margin-top:28px" id="dims"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="handoff">
+    <div class="wrap grid">
+      <div class="main head">
+        <h2>The handoff tax</h2>
+        <div class="read"><p>Every time work changes hands, it joins a queue. Context gets lost, nobody is sure who owns the next step, and someone starts chasing. The study tests whether friction rises with each handoff (hypothesis 1).</p></div>
+      </div>
+      <aside class="margin note">What a handoff costs: waiting in a queue, lost context, unclear accountability, rework when information is missing, status chasing, and the same update sent twice.</aside>
+      <div class="full">
+        <div class="mode"><span class="tag syn">Synthetic demonstration</span><span>Hatched circles are invented. This view opens with real data at 15 workflows.</span></div>
+        <div style="max-width:760px"><svg id="handoffSvg" viewBox="0 0 640 380" role="img" aria-label="Synthetic scatter of handoffs against Hidden Work Score"></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="gate">
+    <div class="wrap grid">
+      <div class="main head">
+        <h2>The AI suitability gate</h2>
+        <div class="read"><p>A workflow can score high on readiness and still fail the gate. Checks run in order, and the first one that fails decides the outcome.</p></div>
+      </div>
+      <div class="full">
+        <ol class="gate">
+          <li><span>Could removing or merging a step solve the problem?</span><span class="out">If yes: fix the process first</span></li>
+          <li><span>Is the process stable, and does information arrive in a usable form?</span><span class="out">If no: fix the process first</span></li>
+          <li><span>Do the decisions follow clear written rules?</span><span class="out">If yes: automate without AI</span></li>
+          <li><span>Could an error materially affect a person's money, health, rights or access, with no one able to review it?</span><span class="out">If yes: do not automate</span></li>
+          <li><span>Is sensitive data involved, or could errors affect a person?</span><span class="out">If yes: AI with human review at most</span></li>
+          <li><span>Can outputs be checked, is one person accountable, is value measurable, and do errors only cost time?</span><span class="out">If all yes: AI appropriate. Otherwise: AI with human review</span></li>
+        </ol>
+        <div class="outcomes" aria-label="Possible outcomes"><span>Fix the process first</span><span>Automate without AI</span><span>Do not automate</span><span>AI with human review</span><span>AI appropriate</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="playbook">
+    <div class="wrap">
+      <div class="head" style="max-width:760px">
+        <h2>Sequence of fixes</h2>
+        <div class="read"><p>Six stages, worked through in order. The principle behind it is old: don't automate a process before you've fixed it. Michael Hammer argued this in the Harvard Business Review in 1990, and it is still the step most often skipped.</p></div>
+      </div>
+      <div class="tbl"><table class="playbook">
+        <thead><tr><th>Stage</th><th>Question to ask</th><th>Typical change</th><th>Example</th><th>Evidence before moving on</th></tr></thead>
+        <tbody>
+          <tr><td>Simplify</td><td>Does this step need to exist?</td><td>Remove or merge steps</td><td>Drop a second sign off nobody reads</td><td>Step count and handoffs reduced; no new errors after four weeks</td></tr>
+          <tr><td>Standardise</td><td>Is there one way, one owner, one exception route?</td><td>Named owner, written route, intake checks</td><td>No order placed without a purchase order</td><td>Fewer cases sent back; owner confirmed</td></tr>
+          <tr><td>Digitise</td><td>Is information captured once, in fields?</td><td>Structured intake, one system of record</td><td>One form replaces three emails</td><td>Data typed in once; complete at the start</td></tr>
+          <tr><td>Automate</td><td>Can a rule move the work?</td><td>Routing, reminders, matching, status updates</td><td>Auto approve when invoice matches its order</td><td>Rule hit rate measured; exceptions logged</td></tr>
+          <tr><td>Augment</td><td>Is a person reading messy input and making a call?</td><td>AI drafts or extracts, a person approves</td><td>AI reads a non standard invoice; assistant checks it</td><td>Accuracy measured against human review; gate passed</td></tr>
+          <tr><td>Orchestrate</td><td>Do people, systems and AI work as one flow?</td><td>End to end monitoring, clear human checkpoints</td><td>One view of every invoice's status</td><td>Lead time and error rate stable over a quarter</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section class="s" id="case">
+    <div class="wrap">
+      <div class="head" style="max-width:760px">
+        <p class="label">Case study <span class="tag syn">Synthetic demonstration · not research data</span></p>
+        <h2>Supplier invoice approval at a fictional subcontractor</h2>
+        <div class="read"><p>This case was written to show how the method works. No organisation was interviewed. Every number is invented. Real case studies will appear here only with the organisation's written consent.</p></div>
+      </div>
+
+      <div class="passport" id="passport"></div>
+
+      <div style="margin-top:56px">
+        <h3 style="margin-bottom:8px">As Is and To Be</h3>
+        <p class="note" style="margin-bottom:16px">Same lanes, same scale. Highlighted steps are hidden work. Dashed steps are automated.</p>
+        <div class="tabs" role="group" aria-label="Workflow state"><button type="button" id="tAsis" aria-pressed="true">As Is · 14 steps</button><button type="button" id="tTobe" aria-pressed="false">To Be · 8 steps</button></div>
+        <div class="swim-scroll"><div class="swim" id="swim"></div></div>
+        <div class="compare" id="compare"></div>
+      </div>
+
+      <div class="cols3" style="margin-top:48px">
+        <div><h4>Root cause</h4><p style="font-size:15px">No one owns the workflow end to end. Approval rules depend on the site manager, and purchase orders are not always raised before work is ordered, so invoices can't be matched.</p></div>
+        <div><h4>What not to do</h4><p style="font-size:15px">Buy an AI invoice processing tool now. It would read the PDFs faster and still wait nine days for approvals that have no rule.</p></div>
+        <div><h4>Measurement plan</h4><p style="font-size:15px">Median lead time, share of invoices approved automatically, share returned for correction. Baseline in week 0, checks at weeks 8 and 12.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="notes">
+    <div class="wrap grid">
+      <div class="main head">
+        <h2>Field notes</h2>
+        <div class="read"><p>Dated observations from interviews, in the order they happen. These will include things I hear more than once, things that surprise me, and any change to the method with the reason for it.</p></div>
+        <div class="placeholder"><p>No entries yet. The first note will follow the first pilot interview in November 2026.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= INDEX ================= -->
+<div data-view="index" id="v-index" hidden>
+  <section class="s">
+    <div class="wrap">
+      <div class="head" style="max-width:760px">
+        <p class="label">Index</p>
+        <h2>Index views</h2>
+        <div class="read"><p>Each view answers one question and opens only once there are enough workflows to say something. No group with fewer than five workflows is reported, to protect anonymity.</p></div>
+      </div>
+      <div class="tbl"><table class="views">
+        <thead><tr><th>View</th><th>Question</th><th>Chart</th><th class="r">Opens at</th></tr></thead>
+        <tbody id="viewsBody"></tbody>
+      </table></div>
+      <p class="note" style="margin-top:14px">Workflows mapped so far: 0. Pie charts, gauges and averages without a sample size are not used anywhere in the index.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ================= DIAGNOSTIC ================= -->
+<div data-view="diagnostic" id="v-diagnostic" hidden>
+  <section class="s">
+    <div class="wrap grid">
+      <div class="main head">
+        <p class="label">Diagnostic</p>
+        <h2>Hidden Work diagnostic</h2>
+        <div class="read"><p>Twenty questions about one workflow your team runs at least once a week. It takes about five minutes. Answer for how the work actually runs, not how the procedure says it should. The scoring is the same one used in the study, described on the <a href="#method">method page</a>.</p></div>
+      </div>
+      <aside class="margin note">This is a self assessment. In the study I score the same questions from an interview, which is more reliable. Nothing you enter here leaves your browser.</aside>
+    </div>
+    <div class="wrap">
+      <form id="qform" class="qform noprint" novalidate></form>
+      <div id="result" style="max-width:760px;margin-top:48px"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= METHOD ================= -->
+<div data-view="method" id="v-method" hidden>
+  <section class="s">
+    <div class="wrap grid">
+      <div class="main head">
+        <p class="label">Hidden Work Methodology v1.0</p>
+        <h2>Methodology</h2>
+        <div class="read"><p>Version 1.0 was fixed on 21 October 2026, before any interviews, so the results can't reshape it after the fact. Treat it as a hypothesis. The pilot is there to test it.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="s">
+    <div class="wrap grid">
+      <div class="main read" id="methodBody">
+        <h3>Research question</h3>
+        <p>In routine workflows inside Irish organisations, how much of the effort and elapsed time is hidden work, where does it come from, and what should be simplified, standardised, automated or augmented with AI first? The study makes claims about the workflows it studied. It does not estimate a national figure.</p>
+        <h3>Sample and workflow selection</h3>
+        <p>One workflow per organisation. A pilot of 10, then up to 50, aiming for at least five per sector. Participants come through referral and outreach, so the sample is not random, and every output says so. The workflow must run at least weekly, involve at least two people, and come from a fixed list: onboarding, invoice approval, purchase requests, sales follow up, complaints, service requests, scheduling, reporting, document approval, supplier onboarding or compliance evidence.</p>
+        <p>Participants choose a workflow they run regularly, not the one they dislike most. Asking for the worst would inflate every score.</p>
+        <h3>Data captured</h3>
+        <p>From the interview map: steps, handoffs, systems, re entries and waiting points <span class="tag pub">Primary</span>. From the participant: cases per month, lead time, working minutes, and minutes spent chasing, searching, re entering and reworking <span class="tag est">Estimate</span>. Answers to the 20 diagnostic questions, scored by the researcher from interview evidence <span class="tag pub">Primary</span>.</p>
+        <h3>Scoring</h3>
+        <p>Each answer sits on a four point anchored scale mapped to 0, 33.3, 66.7 and 100. A dimension is the mean of its questions. The Hidden Work Score is the mean of seven dimensions. AI Value Readiness is the mean of six, reversed so higher means more ready. Rounding happens only at the end. Anchored scales mean a score describes the same thing in the first workflow and the fiftieth; normalising against the sample would make every score depend on who else took part.</p>
+        <p>Bands: 0 to 24 low, 25 to 49 moderate, 50 to 74 high, 75 to 100 severe. The matrix splits both axes at 50.</p>
+        <h3>Measures kept outside the score</h3>
+        <p>Flow efficiency is working minutes divided by lead time in working minutes. Annual hidden effort is hidden minutes per case × cases per month × 12 ÷ 60, shown from 75% to 125%. Waiting costs elapsed time, not labour, so it appears in lead time and flow efficiency but never in hours released. Value is reported in five separate parts: cash, capacity, time avoided, risk and service. Capacity becomes cash only if the time is redeployed or a cost is avoided.</p>
+        <h3>Missing data</h3>
+        <p>A dimension needs at least one answered question. A score needs at least six of seven dimensions, otherwise it isn't published. Nothing is imputed.</p>
+        <h3>Validation plan</h3>
+        <p>Question testing in the first three interviews. A second practitioner scores three interviews blind, aiming for 80% of answers within one point. Scores are recomputed with practitioner weights and with each dimension left out; if no more than one workflow in ten changes quadrant, equal weights stay. From 20 workflows, the score should rise as flow efficiency falls (Spearman correlation); below 0.3 means the dimensions need rethinking. Dimensions correlating above 0.8 are merged.</p>
+        <h3>Ethics and privacy</h3>
+        <p>Voluntary, with consent and the right to withdraw before publication. No customer names, employee names or documents. Organisations are coded unless they agree in writing to be named. Groups under five workflows are never reported. Notes are kept encrypted and deleted 12 months after publication. Independent of any university or employer.</p>
+        <h3>Limitations</h3>
+        <p>The sample is small and not random. Times are estimates, so hours are ranges. One workflow says nothing about the rest of an organisation. Weights are judgement until tested. The researcher interviews and scores, which is why a second rater checks a sample.</p>
+      </div>
+      <aside class="margin note">The approach builds on established ideas: Hammer's “Reengineering Work: Don't Automate, Obliterate” (Harvard Business Review, 1990), the Lean idea of waste, and flow efficiency. What is new here is applying them together, with an explicit AI suitability test, to Irish workflows in the open.</aside>
+    </div>
+  </section>
+  <section class="s">
+    <div class="wrap">
+      <h3 style="margin-bottom:16px">Weights, v1.0</h3>
+      <div class="tbl" style="max-width:760px"><table>
+        <thead><tr><th>Hidden Work Score dimension</th><th>Questions</th><th class="r">Weight</th></tr></thead>
+        <tbody id="wTable"></tbody>
+      </table></div>
+      <h3 style="margin:48px 0 16px">Version history</h3>
+      <div class="tbl" style="max-width:760px"><table>
+        <thead><tr><th>Version</th><th>Date</th><th>Change</th><th>Reason</th></tr></thead>
+        <tbody><tr><td>1.0</td><td>21 Oct 2026</td><td>Frozen before fieldwork. Equal weights.</td><td>Baseline</td></tr><tr><td>1.1</td><td>After pilot</td><td>To be recorded</td><td>Question testing, second rater, weight sensitivity</td></tr></tbody>
+      </table></div>
+    </div>
+  </section>
+  <section class="s" id="about">
+    <div class="wrap grid">
+      <div class="main">
+        <p class="label" style="margin-bottom:12px">About the research</p>
+        <div class="read">
+          <p>I'm Janhvi Rai, a management consultancy and transformation professional in Dublin. Before this study I worked on audit, controls and process improvement for regulated UK engagements at KPMG Global Services, on a current state and future state operating model engagement with Crowe Ireland, and on digital delivery and go to market at Envaira. I have an MSc in Management Consultancy from UCD Michael Smurfit Graduate Business School.</p>
+        </div>
+        <p style="margin-top:16px" class="note"><a href="https://www.linkedin.com/in/janhvi-rai-08ba07259" target="_blank" rel="noopener">LinkedIn</a> · <a href="https://janhvi-2400.github.io/Janhvi-Rai" target="_blank" rel="noopener">Portfolio</a></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= CONTRIBUTE ================= -->
+<div data-view="contribute" id="v-contribute" hidden>
+  <section class="s">
+    <div class="wrap">
+      <div class="head" style="max-width:760px">
+        <p class="label">Contribute</p>
+        <h2>Take part in the pilot</h2>
+        <div class="read"><p>One conversation of 25 to 30 minutes about a single workflow, built around a recent case. It is confidential, and your organisation can stay anonymous.</p></div>
+      </div>
+      <div class="offer">
+        <div><h4>What it involves</h4><ul><li>One person who runs or manages the workflow</li><li>A walk through of one recent case</li><li>Rough volumes and timings; estimates are fine</li></ul></div>
+        <div><h4>What you receive, within a week</h4><ul><li>A one page Workflow Passport</li><li>Your Hidden Work Score and AI Value Readiness</li><li>Three practical recommendations, in order</li></ul></div>
+        <div><h4>What I never ask for</h4><ul><li>Customer or employee names</li><li>Documents or system access</li><li>Anything you'd rather not share</li></ul></div>
+      </div>
+      <div style="margin-top:56px;max-width:640px">
+        <h3 style="margin-bottom:14px">Register interest</h3>
+        <div class="read"><p>The sign up form asks for seven things: your name, role, organisation, email, sector, the workflow you'd like to look at, and whether you'd prefer to stay anonymous. It takes about two minutes. I'll reply within two working days to find a time.</p></div>
+        <p style="margin-top:20px"><a class="btn" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=icUOQmao0EqaV-YEng07wHgzVYsFA8VBlHj7ROZ_4yRUQVVOMTRTTVhUT1BCS0tNRjEwRE04S0NZMS4u" target="_blank" rel="noopener">Open the sign up form</a></p>
+        <p class="note" style="margin-top:16px">The form is hosted on Microsoft Forms. Your details are used only to arrange the conversation and are deleted if you don't take part. If you'd rather email, write to <span style="user-select:all;color:var(--ink)">janhvirai24@gmail.com</span>.</p>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p>The Hidden Work Index · Ireland. An independent study by <a href="https://www.linkedin.com/in/janhvi-rai-08ba07259" target="_blank" rel="noopener">Janhvi Rai</a>, Dublin. Not affiliated with any university or employer.</p>
+      <p style="margin-top:8px">Methodology v1.0 · Last updated 25 October 2026 · <a href="#method">Method</a> · <a href="#contribute">Contribute</a></p>
+    </div>
+    <div>
+      <p>Public sources</p>
+      <ol>
+        <li><a href="https://enterprise.gov.ie/en/publications/publication-files/a-sectoral-study-on-ai-in-enterprise-in-ireland.pdf" target="_blank" rel="noopener">DETE, A Sectoral Study on AI in Enterprise in Ireland, Oct 2026</a></li>
+        <li><a href="https://www.ibec.ie/sfa/news-insights-and-events/news/2026/08/10/small-firms-association-sound-alarm-over-shallow-ai-adoption" target="_blank" rel="noopener">Small Firms Association, AI Survey 2026</a></li>
+        <li><a href="https://www.cso.ie/en/releasesandpublications/ep/p-isse/informationsocietystatistics-enterprises2025/artificialintelligence" target="_blank" rel="noopener">CSO, Information Society Statistics: Enterprises 2025</a></li>
+      </ol>
+      <p style="margin-top:12px">The diagnostic runs in your browser. Nothing you enter is sent or stored.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const NS='http://www.w3.org/2000/svg';
+function el(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+function txt(t,a,p,s){const e=el('text',a,p);e.textContent=s;return e}
+const toast=m=>{const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),1800)};
+const copy=(s,okMsg)=>{try{navigator.clipboard.writeText(s).then(()=>toast(okMsg),()=>toast('Copy blocked here. Select the text instead.'))}catch(e){toast('Copy blocked here. Select the text instead.')}};
+const standalone=(()=>{try{return window.self===window.top}catch(e){return false}})();
+
+/* ---------- routing ---------- */
+const VIEWS=['home','research','index','diagnostic','method','contribute'];
+const ANCH={s1:'home',s2:'home',s3:'home',s4:'home',s5:'home',score:'research',handoff:'research',gate:'research',playbook:'research',case:'research',notes:'research',about:'method'};
+function route(){
+  let h=(location.hash||'#home').slice(1);let view=VIEWS.includes(h)?h:(ANCH[h]||'home');
+  $$('[data-view]').forEach(v=>v.hidden=v.dataset.view!==view);
+  $$('nav.links a').forEach(a=>{if(a.getAttribute('href')==='#'+view)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+  $('#navLinks').classList.remove('open');$('#menuBtn').setAttribute('aria-expanded','false');
+  if(ANCH[h]){const t=document.getElementById(h);if(t)setTimeout(()=>t.scrollIntoView({block:'start'}),0)}else window.scrollTo(0,0);
+  if(view==='research')runDecomp();
+}
+addEventListener('hashchange',route);
+$('#menuBtn').onclick=()=>{const o=$('#navLinks').classList.toggle('open');$('#menuBtn').setAttribute('aria-expanded',o)};
+
+/* ---------- model ---------- */
+const DIMS=[
+ {k:'manual',n:'Manual effort and searching',s:'Manual effort',q:[0,1],why:'Copying, typing and searching are effort that nobody plans for and few people count.',obs:'Share of steps that are keying or searching on the map; questions 1 and 2.',aff:'Mean of two questions. Most of it means 67 to 100.',plain:'A lot of the work is copying, typing and searching. Capture information once, in a structured form.'},
+ {k:'hand',n:'Handoffs and waiting',s:'Handoffs',q:[2,3],why:'Each change of hands adds a queue, loses context and blurs who is responsible.',obs:'Lane crossings counted on the swimlane; waits reported per step; questions 3 and 4.',aff:'Seven or more handoffs, or work waiting almost always, pushes this to 100.',plain:'Work stops while it waits for other people. Fewer handoffs, and one person carrying each case, will do more than any tool.'},
+ {k:'rework',n:'Rework and duplication',s:'Rework',q:[4,5],why:'Cases that come back double the effort and point to a problem upstream.',obs:'Share of cases returned; times the same data is typed in; questions 5 and 6.',aff:'Over one in three returned, or four entries of the same data, scores 100.',plain:'Cases come back and data is typed in more than once. Check completeness at the start and capture information once.'},
+ {k:'own',n:'Ownership and governance',s:'Ownership',q:[6,7],why:'Without an end to end owner, gaps between teams stay open.',obs:'Whether a named person manages the whole; how exceptions are handled; questions 7 and 8.',aff:'No owner and exceptions that get stuck scores 100.',plain:'Nobody owns the whole workflow, so gaps between teams stay open. Name one owner and write down the route for exceptions.'},
+ {k:'know',n:'Knowledge and documentation',s:'Knowledge',q:[8,9],why:'Work that lives in one head can’t be improved, delegated or automated.',obs:'Whether a new starter could run it; key person dependency; questions 9 and 10.',aff:'Undocumented and dependent on one person scores 100.',plain:'The workflow depends on what a few people know. Write it down so a new starter could run it.'},
+ {k:'sys',n:'Systems and data fragmentation',s:'Systems',q:[10,11],why:'Disconnected tools turn people into the integration layer.',obs:'Tools touched per case; whether data moves without retyping; questions 11 and 12.',aff:'Six or more tools that never share data scores 100.',plain:'People are moving information between disconnected tools. Choose one system of record and connect or retire the rest.'},
+ {k:'meas',n:'Measurement and impact',s:'Measurement',q:[12],why:'Without a baseline, nobody can show that a change worked.',obs:'Whether lead time is measured; question 13.',aff:'Not knowing how long a case takes scores 100.',plain:'You can’t see how long this takes, so you can’t show it improving. Start measuring lead time now.'}
+];
+const TIE=['hand','own','know','rework','sys','manual','meas'];
+const Q=[
+ ['How much of this workflow is people typing, copying or reformatting information by hand?',['Almost none','Some','About half','Most of it']],
+ ['Before they can continue, how often do people look in more than one place for a file or answer?',['Rarely','Sometimes','In most cases','In every case']],
+ ['How many times does a typical case change hands between people or teams?',['Once or never','2 or 3 times','4 to 6 times','7 or more times']],
+ ['How often does work stop while waiting for another person or team?',['Rarely','Sometimes','In most cases','Almost always']],
+ ['Roughly how many cases are corrected or sent back for missing information?',['Fewer than 1 in 20','1 in 20 to 1 in 7','1 in 7 to 1 in 3','More than 1 in 3']],
+ ['How many times is the same information typed into a system during one case?',['Once','Twice','Three times','Four or more times']],
+ ['Is one person accountable for the outcome from start to finish?',['Yes, and they manage it','Named, but nobody manages the whole','It depends who you ask','No']],
+ ['When a case doesn’t fit the normal route, what happens?',['There is a written route','An informal route everyone knows','We work it out each time','It usually gets stuck']],
+ ['Could a new employee complete this workflow from existing documentation?',['Yes','With some help','Only with a lot of help','No, it lives in people’s heads']],
+ ['If the most experienced person on it left tomorrow, what would happen?',['Little would change','A few slow weeks','Serious disruption','It would stop']],
+ ['How many separate tools does one case touch? Count email, spreadsheets, CRM, finance and shared drives.',['1 or 2','3','4 or 5','6 or more']],
+ ['Do those tools pass information to each other without anyone retyping or exporting it?',['Yes, mostly','Partly','Rarely','Never']],
+ ['Do you know how long a case takes from trigger to outcome?',['We measure it','A rough idea from data','A guess','No']],
+ ['Does the workflow run the same way most of the time?',['Almost always','Mostly','It varies a lot','Every case is different']],
+ ['How does the information arrive?',['Structured forms or fields','Mostly digital, some free text','Mostly emails and PDFs','Paper or conversation']],
+ ['How often does it run?',['Daily or more','Weekly','Monthly','Less often']],
+ ['How are the decisions in it made?',['Clear written rules','Mostly rules, some judgement','Mostly judgement','Expert judgement every time']],
+ ['If a tool drafted or decided something, could a person check it before it took effect?',['Yes, easily','Yes, with some effort','Hard to arrange','No']],
+ ['Could the problem be solved by removing or merging a step?',['No','Not sure','Possibly','Very likely']],
+ ['What is the worst result of an error in this workflow?',['Lost time only','Cost or inconvenience to the business','Sensitive personal or financial data wrong or exposed','A person’s money, health, rights or access affected']]
+];
+const SEC=i=>i<13?'Hidden Work Score · '+DIMS.find(d=>d.q.includes(i)).s:i<18?'AI Value Readiness':'AI Suitability Gate';
+const V=[0,100/3,200/3,100];
+const READ=[{k:'stab',n:'Stability',q:13},{k:'data',n:'Data',q:14},{k:'vol',n:'Volume',q:15},{k:'dec',n:'Decisions',q:16},{k:'over',n:'Oversight',q:17},{k:'meas',n:'Measurable value',q:12}];
+function score(a){
+  const d={};DIMS.forEach(x=>{d[x.k]=x.q.reduce((s,i)=>s+V[a[i]],0)/x.q.length});
+  const hws=DIMS.reduce((s,x)=>s+d[x.k],0)/7;
+  const r={};READ.forEach(x=>r[x.k]=100-V[a[x.q]]);
+  const rd=READ.reduce((s,x)=>s+r[x.k],0)/6;
+  const ranked=[...DIMS].sort((x,y)=>(d[y.k]-d[x.k])||(TIE.indexOf(x.k)-TIE.indexOf(y.k)));
+  // gate
+  let gate,check;
+  if(a[18]===3){gate='fix';check='Removing or merging a step looks likely to solve it.'}
+  else if(a[13]>=2||a[14]>=2){gate='fix';check=a[13]>=2?'The process varies too much from case to case.':'Information arrives in emails, PDFs or on paper.'}
+  else if(a[16]===0){gate='rules';check='Decisions follow clear written rules, so ordinary automation will do.'}
+  else if(a[19]===3&&a[17]>=2){gate='none';check='An error could seriously affect a person, and no one could review it.'}
+  else if(a[19]>=2){gate='review';check='Sensitive data, or errors that could affect a person.'}
+  else if(a[17]===0&&a[12]<=1&&a[6]===0&&a[19]===0){gate='ok';check='Outputs can be checked, one person is accountable, value is measurable and errors only cost time.'}
+  else{gate='review';check='Not every condition for unsupervised AI is met.'}
+  const GATE={fix:'Fix the process first',rules:'Automate without AI',none:'Do not automate',review:'AI with human review',ok:'AI appropriate'};
+  const FINAL={fix:rd>=50?'Automate selectively':'Reassess once fixed',rules:'Automate, no AI',none:'Keep it manual, with controls',review:'Augment with AI, a person approves',ok:'Augment with AI'};
+  let path=[];
+  if(a[18]>=2||d.rework>=50)path.push('Simplify');
+  if(d.hand>=50||d.own>=50)path.push('Standardise');
+  if(d.know>=50)path.push('Document');
+  if(d.sys>=50||d.manual>=50)path.push('Integrate');
+  path.push(FINAL[gate]);
+  if(hws<25)path=['Leave it largely alone'];
+  const H=Math.round(hws),R=Math.round(rd);
+  const quad=H>=50?(R>=50?'Transform now':'Fix first'):(R>=50?'Optimise selectively':'Leave it alone');
+  const band=H<25?'Low':H<50?'Moderate':H<75?'High':'Severe';
+  return {d,r,H,R,ranked,gate:GATE[gate],check,path,quad,band};
+}
+
+/* synthetic case answers (SYN01) */
+const SYN=[2,2,2,3,2,2,1,2,2,2,2,2,2, 2,2,0,1,0, 2,1];
+const SYNR=score(SYN);
+
+/* ---------- strip ---------- */
+(function(){
+  const seq=[['w',6,'Log invoice'],['x',240],['w',4,'Email site manager'],['x',960],['w',5,'Site manager checks'],['x',60],['w',8,'Key into tracker'],['x',720],['w',4,'QS checks job code'],['x',450],['w',6,'Chase missing PO'],['x',900],['w',9,'Key into accounts'],['x',668],['w',10,'Approve and pay']];
+  const s=$('#strip');
+  seq.forEach(([t,m,l])=>{const d=document.createElement('div');d.className='seg '+(t==='w'?'work':'wait');d.style.flexGrow=m;if(l){d.title=l+', '+m+' min';const sp=document.createElement('span');sp.textContent=l+' · '+m+'m';d.appendChild(sp)}else d.title='Waiting, about '+Math.round(m/60)+' working hours';s.appendChild(d)});
+  $('#onlyWork').onchange=e=>s.classList.toggle('only',e.target.checked);
+})();
+
+/* ---------- matrix ---------- */
+const DEMO=[
+ {c:'SYN01',n:'Supplier invoice approval',s:'Construction',f:SYNR.H,a:SYNR.R,tf:34,ta:74,p:'Handoffs',route:SYNR.path.join(' → ')},
+ {c:'SYN02',n:'Client onboarding',s:'Professional services',f:72,a:44,tf:41,ta:63,p:'Knowledge',route:'Standardise → Document → Integrate → Automate selectively'},
+ {c:'SYN03',n:'Employee onboarding',s:'Hospitality',f:58,a:36,tf:33,ta:52,p:'Ownership',route:'Standardise → Document → Reassess once fixed'},
+ {c:'SYN04',n:'Service requests',s:'Technology',f:49,a:71,tf:30,ta:80,p:'Systems',route:'Integrate → Augment with AI, a person approves'},
+ {c:'SYN05',n:'Monthly management reporting',s:'Nonprofit',f:63,a:58,tf:30,ta:70,p:'Manual effort',route:'Standardise → Integrate → Automate, no AI'},
+ {c:'SYN06',n:'Complaints handling',s:'Retail',f:55,a:30,tf:36,ta:45,p:'Ownership',route:'Standardise → Document → Reassess once fixed'},
+ {c:'SYN07',n:'Staff scheduling',s:'Hospitality',f:28,a:40,tf:24,ta:42,p:'Knowledge',route:'Leave it largely alone'},
+ {c:'SYN08',n:'Sales follow up',s:'Technology',f:38,a:62,tf:27,ta:70,p:'Systems',route:'Integrate → Automate, no AI'},
+ {c:'SYN09',n:'Compliance evidence collection',s:'Financial services',f:77,a:33,tf:45,ta:55,p:'Knowledge',route:'Simplify → Standardise → Document → Reassess once fixed'},
+ {c:'SYN10',n:'Document approval',s:'Property',f:44,a:26,tf:34,ta:33,p:'Ownership',route:'Standardise → Reassess once fixed'}
+];
+let USER=null;
+function drawMatrix(host){
+  host.innerHTML=`<div><div class="mode"><span class="tag syn">Demonstration mode</span><span>Every hatched dot is a synthetic workflow. Real dots replace them as pilot interviews are scored.</span></div><svg viewBox="0 0 560 560" role="img" aria-label="Matrix of Hidden Work Score against AI Value Readiness"></svg></div><div class="panel" aria-live="polite"><p class="label">Select a dot</p><p style="font-size:15px">Each dot is one workflow. The thin line runs to where it should land after the recommended changes: fixing a process lowers friction and usually raises readiness.</p></div>`;
+  const svg=host.querySelector('svg'),panel=host.querySelector('.panel');
+  const L=52,T=16,W=490,Hh=490,X=a=>L+a/100*W,Y=f=>T+(1-f/100)*Hh;
+  const defs=el('defs',{},svg);
+  const pat=el('pattern',{id:'hatch'+host.id,width:5,height:5,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'},defs);el('line',{x1:0,y1:0,x2:0,y2:5,stroke:'var(--ink-2)','stroke-width':1.6},pat);
+  const mk=el('marker',{id:'arr'+host.id,viewBox:'0 0 10 10',refX:9,refY:5,markerWidth:6,markerHeight:6,orient:'auto'},defs);el('path',{d:'M0 0L10 5L0 10z',fill:'var(--ink-2)'},mk);
+  el('rect',{x:L,y:T,width:W,height:Hh,fill:'none',stroke:'var(--rule)'},svg);
+  el('line',{x1:X(50),x2:X(50),y1:T,y2:T+Hh,stroke:'var(--ink)','stroke-width':1},svg);
+  el('line',{x1:L,x2:L+W,y1:Y(50),y2:Y(50),stroke:'var(--ink)','stroke-width':1},svg);
+  txt('text',{x:L+12,y:T+28,class:'qname'},svg,'Fix first');
+  txt('text',{x:L+W-12,y:T+28,class:'qname','text-anchor':'end'},svg,'Transform now');
+  txt('text',{x:L+12,y:T+Hh-14,class:'qname'},svg,'Leave it alone');
+  txt('text',{x:L+W-12,y:T+Hh-14,class:'qname','text-anchor':'end'},svg,'Optimise selectively');
+  [0,50,100].forEach(v=>{txt('text',{x:X(v),y:T+Hh+18,'text-anchor':'middle','font-size':12},svg,v);txt('text',{x:L-8,y:Y(v)+4,'text-anchor':'end','font-size':12},svg,v)});
+  txt('text',{x:X(50),y:T+Hh+40,'text-anchor':'middle','font-size':13},svg,'AI Value Readiness, higher is more ready');
+  txt('text',{x:14,y:Y(50),'text-anchor':'middle','font-size':13,transform:`rotate(-90 14 ${Y(50)})`},svg,'Hidden Work Score, higher is more friction');
+  const pts=DEMO.map(p=>({...p,syn:true}));if(USER)pts.push(USER);
+  pts.forEach(p=>{
+    if(p.tf!=null){const dx=X(p.ta)-X(p.a),dy=Y(p.tf)-Y(p.f),len=Math.hypot(dx,dy);if(len>18)el('line',{x1:X(p.a)+dx/len*8,y1:Y(p.f)+dy/len*8,x2:X(p.ta),y2:Y(p.tf),stroke:'var(--ink-2)','stroke-width':1,'marker-end':`url(#arr${host.id})`,opacity:.7},svg)}
+  });
+  pts.forEach(p=>{
+    const g=el('g',{class:'dot',tabindex:0,role:'button','aria-label':`${p.n}, ${p.s}. Hidden Work Score ${p.f}, readiness ${p.a}.`},svg);
+    el('circle',{class:'o',cx:X(p.a),cy:Y(p.f),r:p.syn?8:9,fill:p.syn?`url(#hatch${host.id})`:'var(--ink)',stroke:p.syn?'var(--ink-2)':'var(--ink)','stroke-width':1.2},g);
+    if(!p.syn)txt('text',{x:X(p.a)+13,y:Y(p.f)+4,'font-size':12.5,'font-weight':600,style:'fill:var(--ink)'},g,'Your workflow');
+    const show=()=>{panel.innerHTML=`<p class="label">${p.syn?'<span class="tag syn">Synthetic</span> '+p.c:'Your diagnostic result'}</p><h3>${p.n}</h3><dl><dt>Sector</dt><dd>${p.s}</dd><dt>Hidden Work Score</dt><dd class="num">${p.f}</dd><dt>AI Value Readiness</dt><dd class="num">${p.a}</dd><dt>Primary friction</dt><dd>${p.p}</dd><dt>Route</dt><dd>${p.route}</dd></dl>`};
+    g.addEventListener('click',show);g.addEventListener('focus',show);g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();show()}});
+  });
+}
+drawMatrix($('#homeMatrix'));
+
+/* ---------- research: decomposition + dims ---------- */
+const decomp=$('#decomp');
+DIMS.forEach(x=>{const i=document.createElement('i');i.style.flexGrow=0;i.dataset.v=SYNR.d[x.k]/7;i.title=`${x.s}: ${Math.round(SYNR.d[x.k])} ÷ 7 = ${(SYNR.d[x.k]/7).toFixed(1)}`;const sp=document.createElement('span');sp.textContent=x.s;i.appendChild(sp);decomp.appendChild(i)});
+const rest=document.createElement('i');rest.className='rest';rest.style.flexGrow=100;rest.dataset.v=100-SYNR.H;decomp.appendChild(rest);
+let decompDone=false;
+function runDecomp(){if(decompDone)return;decompDone=true;requestAnimationFrame(()=>setTimeout(()=>{$$('#decomp i').forEach(i=>i.style.flexGrow=i.dataset.v)},reduce?0:150))}
+$('#decompNote').textContent=`Each highlighted block is one dimension's contribution, its score divided by seven. Together they make ${SYNR.H}. The grey remainder is the distance to 100.`;
+$('#dims').innerHTML=DIMS.map(x=>`<details><summary><span class="t">${x.n}</span><span class="w">1/7 of the score</span></summary><div><div><h4>Why it matters</h4><p>${x.why}</p></div><div><h4>How it is observed</h4><p>${x.obs}</p></div><div><h4>How it affects the score</h4><p>${x.aff}</p></div></div></details>`).join('');
+$('#wTable').innerHTML=DIMS.map(x=>`<tr><td>${x.n}</td><td>${x.q.map(i=>i+1).join(' and ')}</td><td class="r num">1/7</td></tr>`).join('')+'<tr><td>AI Value Readiness: stability, data, volume, decisions, oversight, measurable value</td><td>14 to 18, and 13 reversed</td><td class="r num">1/6 each</td></tr>';
+
+/* handoff tax synthetic scatter */
+(function(){
+  const svg=$('#handoffSvg');const L=56,T=16,W=560,Hh=300,X=h=>L+h/10*W,Y=f=>T+(1-f/100)*Hh;
+  const defs=el('defs',{},svg);const pat=el('pattern',{id:'hatchH',width:5,height:5,patternUnits:'userSpaceOnUse',patternTransform:'rotate(45)'},defs);el('line',{x1:0,y1:0,x2:0,y2:5,stroke:'var(--mark-ink)','stroke-width':1.6},pat);
+  [0,25,50,75,100].forEach(v=>{el('line',{x1:L,x2:L+W,y1:Y(v),y2:Y(v),stroke:'var(--rule)'},svg);txt('text',{x:L-8,y:Y(v)+4,'text-anchor':'end','font-size':12,style:'fill:var(--ink-2)'},svg,v)});
+  [0,2,4,6,8,10].forEach(h=>txt('text',{x:X(h),y:T+Hh+18,'text-anchor':'middle','font-size':12,style:'fill:var(--ink-2)'},svg,h));
+  txt('text',{x:L+W/2,y:T+Hh+42,'text-anchor':'middle','font-size':13,style:'fill:var(--ink-2)'},svg,'Handoffs per case');
+  txt('text',{x:14,y:Y(50),'text-anchor':'middle','font-size':13,transform:`rotate(-90 14 ${Y(50)})`,style:'fill:var(--ink-2)'},svg,'Hidden Work Score');
+  const pts=[[1,24,40],[1,31,20],[2,29,90],[2,38,30],[3,35,60],[3,47,150],[4,44,25],[4,55,80],[5,51,40],[6,62,180],[6,49,30],[7,66,70],[8,71,40],[9,78,110]];
+  pts.forEach(([h,f,v])=>el('circle',{cx:X(h),cy:Y(f),r:5+Math.sqrt(v)*0.9,fill:'url(#hatchH)',stroke:'var(--mark-ink)','stroke-width':1,'fill-opacity':.9},svg));
+  txt('text',{x:L+W-4,y:T+Hh-10,'text-anchor':'end','font-size':12,style:'fill:var(--ink-2)'},svg,'Circle size: cases per month');
+})();
+
+/* passport */
+(function(){
+  const r=SYNR;const top2=r.ranked.slice(0,2).map(x=>x.k);
+  const facts=[['Trigger','Invoice arrives by email'],['Desired outcome','Paid on terms, coded to the right job'],['Owner','No end to end owner'],['Teams involved','4'],['Systems involved','4: email, Excel, accounts, drive'],['Steps','14'],['Handoffs','6'],['Duplicate data entries','3'],['Lead time','9 working days, median'],['Working time per case','52 minutes'],['Flow efficiency','1.3%'],['Knowledge dependency','High: one person knows the exceptions']];
+  $('#passport').innerHTML=`
+    <div class="pp-head"><div><p class="label">Workflow Passport · SYN01 · Construction</p><h3>Supplier invoice approval</h3></div><div class="note" style="text-align:right">Methodology v1.0<br><span class="tag syn">Synthetic demonstration</span></div></div>
+    <div class="pp-facts">${facts.map(([a,b])=>`<div><span>${a}</span><b style="font-weight:500;text-align:right">${b}</b></div>`).join('')}</div>
+    <div class="pp-scores">
+      <div><p class="label">Hidden Work Score</p><div class="big num">${r.H}</div><p class="band">${r.band}</p></div>
+      <div><p class="label">AI Value Readiness</p><div class="big num">${r.R}</div><p class="band">${r.quad}</p></div>
+      <div class="bars">${r.ranked.map(x=>`<div class="bar${top2.includes(x.k)?' top':''}"><span>${x.s}</span><span class="t"><i style="width:${r.d[x.k]}%"></i></span><span class="num">${Math.round(r.d[x.k])}</span></div>`).join('')}</div>
+    </div>
+    <div class="rblock"><p class="label">Gate outcome</p><p><b>${r.gate}.</b> ${r.check} The matrix says this workflow is worth transforming. The gate says not yet.</p></div>
+    <div class="cols3">
+      <div><h4>Recommendations, in order</h4><ol><li>Require a purchase order before any order is placed; approve automatically when the invoice matches it. Owner: finance manager.</li><li>One invoice inbox, a written exceptions route, and data captured once in the accounts package. Retire the tracker.</li><li>Rule based matching and reminders in the existing package. AI only to read non standard invoices, checked before posting.</li></ol></div>
+      <div><h4>Human controls retained</h4><ul><li>Mismatched invoices and new suppliers: finance manager</li><li>Anything above a value threshold: finance manager</li><li>Every AI extraction: checked by the accounts assistant</li></ul></div>
+      <div><h4>Value, kept separate <span class="tag est">Estimate</span></h4><ul><li>Capacity released: about 1,000 hours a year, range 760 to 1,260</li><li>Time avoided: lead time from 9 to about 3 days</li><li>Risk: no payment without a matched order</li><li>Cash saving: none claimed</li></ul></div>
+    </div>
+    <p class="note">Route: ${r.path.join(' → ')}. Scores computed from the synthetic answers using methodology v1.0. Capacity assumes 28 minutes removed per invoice, 180 invoices a month.</p>`;
+})();
+
+/* swimlane morph */
+(function(){
+  const lanes=['Accounts assistant','Site manager','Quantity surveyor','Finance manager'];
+  const AS=[
+   [0,'Invoice arrives in shared inbox','',1],[0,'Save PDF to shared drive','',null],[0,'Key into Excel tracker','hw',2],[1,'Check work was done','',4],
+   [0,'Chase missing purchase order','hw',3],[1,'Approve invoice','',4],[2,'Confirm job code','',null],[0,'Correct job code','hw',3],
+   [0,'Key into accounts package','hw',2],[0,'Update tracker','hw',null],[3,'Review payment run','',6],[3,'Answer supplier query','hw',null],[3,'Approve payment','',7],[3,'Pay supplier','',8]];
+  const TB={1:[0,'Invoice arrives in one invoice inbox',''],2:[0,'Capture once in accounts package','auto'],3:[0,'Auto match to purchase order','auto'],4:[1,'Approve mismatches only',''],5:[1,'Resolve exception by written route',''],6:[3,'Review payment run',''],7:[3,'Approve payment',''],8:[3,'Pay supplier','']};
+  const swim=$('#swim');const LH=70,X0=130,LT=10;
+  lanes.forEach((n,i)=>{const d=document.createElement('div');d.className='lane';d.style.top=(LT+i*LH)+'px';d.innerHTML=`<b>${n}</b>`;swim.appendChild(d)});
+  const svg=el('svg',{viewBox:'0 0 1000 300'},null);swim.appendChild(svg);
+  const pos=(lane,col,n,w)=>({left:X0+col*((1000-X0-10)/n)+((1000-X0-10)/n-w)/2,top:LT+lane*LH+8});
+  const boxes=AS.map(([lane,l,cls,to],i)=>{const b=document.createElement('div');b.className='box '+cls;b.textContent=l;const p=pos(lane,i,14,58);b.style.left=p.left+'px';b.style.top=p.top+'px';swim.appendChild(b);return {b,lane,i,l,cls,to}});
+  const added=document.createElement('div');added.className='box gone';added.textContent=TB[5][1];swim.appendChild(added);
+  const seen={};boxes.forEach(x=>{if(x.to&&!seen[x.to]){seen[x.to]=x;x.primary=true}});
+  function connectors(state){
+    svg.innerHTML='';
+    let list=state==='as'?boxes.map(x=>({lane:x.lane,c:x.i,n:14,w:58})):[1,2,3,4,5,6,7,8].map(k=>({lane:TB[k][0],c:k-1,n:8,w:104}));
+    for(let i=0;i<list.length-1;i++){const a=list[i],b=list[i+1];const pa=pos(a.lane,a.c,a.n,a.w),pb=pos(b.lane,b.c,b.n,b.w);
+      const x1=pa.left+a.w,y1=pa.top+27,x2=pb.left,y2=pb.top+27;
+      if(a.lane===b.lane)el('line',{x1,y1,x2,y2},svg);else{const mx=(x1+x2)/2;el('path',{d:`M${x1} ${y1}H${mx}V${y2}H${x2}`,'stroke-dasharray':'3 3'},svg)}}
+  }
+  connectors('as');
+  function set(state){
+    $('#tAsis').setAttribute('aria-pressed',state==='as');$('#tTobe').setAttribute('aria-pressed',state==='to');
+    svg.style.opacity=0;
+    boxes.forEach(x=>{
+      if(state==='as'){const p=pos(x.lane,x.i,14,58);Object.assign(x.b.style,{left:p.left+'px',top:p.top+'px',width:'58px'});x.b.classList.remove('gone');x.b.className='box '+x.cls;x.b.textContent=x.l}
+      else if(!x.to){x.b.classList.add('gone')}
+      else{const t=TB[x.to];const p=pos(t[0],x.to-1,8,104);Object.assign(x.b.style,{left:p.left+'px',top:p.top+'px',width:'104px'});if(x.primary){x.b.className='box '+t[2];x.b.textContent=t[1]}else x.b.classList.add('gone')}
+    });
+    if(state==='to'){const p=pos(TB[5][0],4,8,104);Object.assign(added.style,{left:p.left+'px',top:p.top+'px',width:'104px'});setTimeout(()=>added.classList.remove('gone'),reduce?0:500)}else added.classList.add('gone');
+    setTimeout(()=>{connectors(state);svg.style.opacity=1},reduce?0:950);
+    const C=state==='as'?[14,6,4,3,52,'9 days']:[8,2,2,1,24,'3 days'];
+    $('#compare').innerHTML=[['Steps',14,8],['Handoffs',6,2],['Systems',4,2],['Data entries',3,1],['Working minutes',52,24],['Lead time','9 days','3 days']].map(([n,a,b])=>`<div><span class="note">${n}</span>${state==='as'?`<b class="num">${a}</b>`:`<b class="num">${b}</b><s class="num">${a}</s>`}</div>`).join('');
+  }
+  $('#tAsis').onclick=()=>set('as');$('#tTobe').onclick=()=>set('to');set('as');
+})();
+
+/* ---------- index views ---------- */
+const VIEWSI=[['Overview','What does the sample look like, and how much friction does it carry?','Dot plot of every workflow, median marked',10],['Where work breaks','Which dimensions drive friction?','Ranked bars with range whiskers',10],['Sector benchmark','Do sectors differ more than workflows within them?','Small multiples, one strip per sector','5 per sector'],['The Handoff Tax','Does friction rise with each handoff?','Scatter with fitted band',15],['Knowledge and documentation','Does undocumented work carry more friction?','Box plots by documentation level',15],['System and data fragmentation','Do more tools mean more re entry?','Heatmap of tools against re entries',15],['AI opportunity map','Where does AI make sense, and where does the gate stop it?','The matrix, coloured by gate outcome',10],['Capacity opportunity','How much hidden effort is there, and how sure are we?','Ranked dots with low to high ranges',10],['Flow efficiency','How much of elapsed time is actual work?','Strip plot on a log scale',10],['Transformation portfolio','What should be done first across the sample?','Recommendations by stage',10],['Case studies','What does one workflow look like in full?','Workflow Passport with As Is and To Be','1, with consent']];
+$('#viewsBody').innerHTML=VIEWSI.map(([v,q,c,n])=>`<tr><td>${v}</td><td>${q}</td><td class="note">${c}</td><td class="r lock num">${n}${typeof n==='number'?' workflows':''}</td></tr>`).join('');
+
+/* ---------- diagnostic ---------- */
+const st={a:new Array(20).fill(null)};
+const qform=$('#qform'),res=$('#result');
+const PARTS=[['A','How the work runs',0,13],['B','Readiness for automation',13,18],['C','Risk and alternatives',18,20]];
+function buildForm(){
+  let h=`<div class="field" style="max-width:480px"><label for="wfIn">Which workflow are you describing?</label><input id="wfIn" placeholder="For example, invoice approval"></div>`;
+  PARTS.forEach(([p,t,a,b])=>{
+    h+=`<h3 class="part">Part ${p}. ${t} <span class="note">Questions ${a+1} to ${b}</span></h3>`;
+    for(let i=a;i<b;i++){const [q,o]=Q[i];
+      h+=`<fieldset class="qq" id="qq${i}"><legend><span class="qn num">${i+1}</span>${q}</legend><div class="ro">${o.map((x,j)=>`<label><input type="radio" name="q${i}" value="${j}"><span>${x}</span></label>`).join('')}</div></fieldset>`;
+    }
+  });
+  h+=`<h3 class="part">Part D. Time involved <span class="note">Optional. Estimates are fine</span></h3>
+  <p class="note" style="max-width:62ch;margin-bottom:14px">Leave these blank to skip the hours estimate. Waiting doesn't go here: it costs days, not staff time.</p>
+  <div class="hgrid">
+    <div class="field"><label for="hCases">Cases per month</label><input id="hCases" type="number" min="0" inputmode="numeric"></div>
+    <div class="field"><label for="hChase">Minutes chasing people, per case</label><input id="hChase" type="number" min="0"></div>
+    <div class="field"><label for="hSearch">Minutes searching for information</label><input id="hSearch" type="number" min="0"></div>
+    <div class="field"><label for="hRekey">Minutes re entering data</label><input id="hRekey" type="number" min="0"></div>
+    <div class="field"><label for="hRework">Minutes fixing or redoing work</label><input id="hRework" type="number" min="0"></div>
+    <div class="field"><label for="hRate">Hourly staff cost in euro, if you want it</label><input id="hRate" type="number" min="0"></div>
+  </div>
+  <div class="submitrow"><button class="btn" type="submit">Score my answers</button><span class="note" id="qcount">0 of 20 answered</span></div>
+  <p class="note" id="qmiss" role="alert"></p>`;
+  qform.innerHTML=h;
+  qform.addEventListener('change',e=>{
+    const m=e.target.name&&e.target.name.match(/^q(\d+)$/);
+    if(m){st.a[+m[1]]=+e.target.value;$('#qq'+m[1]).classList.remove('missing');$('#qcount').textContent=st.a.filter(v=>v!==null).length+' of 20 answered'}
+  });
+  ['hCases','hChase','hSearch','hRekey','hRework','hRate'].forEach(id=>$('#'+id).addEventListener('input',()=>{if(res.dataset.done)hoursBlock()}));
+  qform.addEventListener('submit',e=>{
+    e.preventDefault();
+    const miss=st.a.map((v,i)=>v===null?i:null).filter(v=>v!==null);
+    if(miss.length){miss.forEach(i=>$('#qq'+i).classList.add('missing'));$('#qmiss').textContent=`Still to answer: question${miss.length>1?'s':''} ${miss.map(i=>i+1).join(', ')}.`;$('#qq'+miss[0]).scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});$('#qq'+miss[0]+' input').focus({preventScroll:true});return}
+    $('#qmiss').textContent='';finish();
+  });
+}
+function hoursBlock(){
+  const g=id=>+($('#'+id).value)||0;
+  const mins=g('hChase')+g('hSearch')+g('hRekey')+g('hRework'),cases=g('hCases'),rate=g('hRate');
+  const box=$('#hoursOut');if(!box)return;
+  if(!mins||!cases){box.innerHTML='<p class="note">Fill in Part D to see an estimate. Your answers above stay as they are.</p>';return}
+  const base=mins*cases*12/60,f=n=>Math.round(n).toLocaleString('en-IE');
+  box.innerHTML=`<p><b class="num" style="font-family:var(--serif);font-weight:400;font-size:30px">${f(base*.75)} to ${f(base*1.25)}</b> hours a year</p>${rate?`<p class="num">At €${rate} an hour that is €${f(base*.75*rate)} to €${f(base*1.25*rate)} of staff time.</p>`:''}<p class="note">${mins} minutes per case × ${cases} cases × 12 months, plus or minus 25% because the inputs are estimates. This is time that could be freed up. It only becomes a saving if the time is used elsewhere or a cost goes away.</p>`;
+}
+function finish(){
+  const r=score(st.a);const top=r.ranked.slice(0,2);const name=($('#wfIn').value.trim()||'Your workflow').replace(/</g,'&lt;');
+  res.dataset.done='1';
+  const measure=r.d.meas>=66?'Before changing anything, write down the start and finish date of the next 20 cases. That gives you a baseline to compare against.':'Keep tracking median lead time, and add the share of cases sent back for correction.';
+  res.innerHTML=`<div class="result" id="resultCard">
+    <div style="border-top:2px solid var(--ink);padding-top:14px"><p class="label">Result · ${new Date().toLocaleDateString('en-IE',{day:'numeric',month:'long',year:'numeric'})} · methodology v1.0</p><h3 style="margin-top:6px">${name}</h3></div>
+    <div class="res-scores">
+      <div><p class="label">Hidden Work Score</p><div class="big num">${r.H}<small> / 100</small></div><p class="band">${r.band} friction</p></div>
+      <div><p class="label">AI Value Readiness</p><div class="big num">${r.R}<small> / 100</small></div><p class="band">Quadrant: ${r.quad}</p></div>
+    </div>
+    <div><p class="label" style="margin-bottom:8px">The seven dimensions, highest first</p><div class="bars">${r.ranked.map(x=>`<div class="bar${top.includes(x)?' top':''}"><span>${x.s}</span><span class="t"><i style="width:0" data-w="${r.d[x.k]}"></i></span><span class="num">${Math.round(r.d[x.k])}</span></div>`).join('')}</div></div>
+    <div class="rblock"><p class="label">Biggest source of friction: ${top[0].s}</p><p>${top[0].plain}</p><p class="label" style="margin-top:6px">Next: ${top[1].s}</p><p>${top[1].plain}</p></div>
+    <div class="rblock"><p class="label">Suggested order of changes</p><ol class="steps">${r.path.map(s=>`<li>${s}</li>`).join('')}</ol></div>
+    <div class="rblock"><p class="label">Should AI be involved?</p><p><b>${r.gate}.</b> ${r.check}</p></div>
+    <div class="rblock"><p class="label">Hidden effort</p><div id="hoursOut"></div></div>
+    <div class="rblock"><p class="label">What to measure first</p><p>${measure}</p></div>
+    <div class="noprint" style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <button class="btn" id="copyRes" type="button">Copy result</button>
+      ${standalone?'<button class="btn quiet" id="printRes" type="button">Save as PDF</button>':''}
+      <button class="linkbtn" id="again" type="button">Clear answers</button>
+      <a class="textlink" href="#contribute">Ask for a full diagnostic</a>
+    </div>
+  </div>`;
+  requestAnimationFrame(()=>setTimeout(()=>$$('#resultCard .bar i').forEach(i=>i.style.width=i.dataset.w+'%'),reduce?0:60));
+  hoursBlock();
+  $('#copyRes').onclick=()=>copy([`Hidden Work diagnostic: ${name}`,`Hidden Work Score ${r.H}/100 (${r.band})`,`AI Value Readiness ${r.R}/100 (${r.quad})`,`Biggest friction: ${top[0].s}. Next: ${top[1].s}.`,`Order of changes: ${r.path.join(', then ')}`,`AI: ${r.gate}. ${r.check}`].join('\n'),'Result copied');
+  if(standalone)$('#printRes').onclick=()=>window.print();
+  $('#again').onclick=()=>{qform.reset();st.a.fill(null);$('#qcount').textContent='0 of 20 answered';res.innerHTML='';delete res.dataset.done;USER=null;drawMatrix($('#homeMatrix'));qform.scrollIntoView({behavior:reduce?'auto':'smooth'})};
+  USER={n:name,s:'Your organisation',f:r.H,a:r.R,p:top[0].s,route:r.path.join(', then ')};drawMatrix($('#homeMatrix'));
+  res.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+}
+buildForm();
+
+route();
+})();
+</script>
+
+</body></html>
